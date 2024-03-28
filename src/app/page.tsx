@@ -6,7 +6,7 @@ export default function Home() {
   const [city, setCity] = useState("");
   const [weatherForecast, setWeatherForecast] = useState(null);
 
-  const handleChange = (e) => {
+  const handleChange = (e:any) => {
     setCity(e.target.value);
   }
 
