@@ -1,6 +1,5 @@
 'use client'
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Home() {
   const [city, setCity] = useState("");
@@ -25,7 +24,7 @@ export default function Home() {
     <div>
       <main className="flex flex-col justify-center items-center justify-items-center bg-gradient-to-r from-cyan-500 to-blue-500 h-screen ">
       
-      <label for="pesquisa"
+      <label
         className="font-semibold text-lg mb-2 cursor-pointer text-white">
         Pesquise a cidade que deseja!
       </label>
