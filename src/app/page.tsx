@@ -1,22 +1,26 @@
 'use client'
 import { useState } from "react";
+import Image from "next/image";
 
 export default function Home() {
   const [city, setCity] = useState("");
-  const [weatherForecast, setWeatherForecast] = useState(null);
+  const [weatherForecast, setWeatherForecast] = useState<any>(null); // Definindo weatherForecast como any
 
-  const handleChange = (e:any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCity(e.target.value);
   }
 
   const handleSearch = () => {
     const host = "http://api.weatherapi.com/v1";
     const key = "1da59d72e8d04150b0e122904242703";
-    const lang= "pt"
+    const lang = "pt";
     fetch(`${host}/current.json?key=${key}&q=${city}&lang=${lang}`)
       .then(resp => resp.json())
       .then((data) => {
         setWeatherForecast(data);
+      })
+      .catch(error => {
+        console.error('Error fetching weather forecast:', error);
       });
   }
 
@@ -51,7 +55,11 @@ export default function Home() {
           <div className="flex flex-col justify-items-center items-center m-2 ">
             <h3>Esse é o clima de {city}</h3>
             <p>Temperatura: {weatherForecast.current.temp_c}°C</p>
-            <p><img src={weatherForecast.current.condition.icon}/></p>
+            <Image 
+            src={`https:${weatherForecast.current.condition.icon}`}
+            width={64}
+            height={64}
+            alt="Weather Icon"/>
             <p>{weatherForecast.current.condition.text}</p>
           </div>
             
