@@ -11,7 +11,7 @@ export default function Home() {
   }
 
   const handleSearch = () => {
-    const host = "http://api.weatherapi.com/v1";
+    const host = "https://api.weatherapi.com/v1";
     const key = "1da59d72e8d04150b0e122904242703";
     const lang = "pt";
     fetch(`${host}/current.json?key=${key}&q=${city}&lang=${lang}`)
